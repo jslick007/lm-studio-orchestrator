@@ -53,6 +53,27 @@ graph TD
 3. **Execution**: The orchestrator fires concurrent requests to all nodes.
 4. **Aggregation**: Responses are collected, re-ordered by their original sequence ID, and concatenated into the final response.
 
+## 🚀 Getting Started
+
+### Installation
+```bash
+git clone https://github.com/jslick007/lm-studio-orchestrator.git
+cd lm-studio-orchestrator
+pip install -r requirements.txt
+```
+
+### Running the Orchestrator
+```bash
+# Create .env file with LM_STUDIO_URL=http://localhost:1234/v1
+python -m app.main
+```
+
+### Registering Worker Nodes
+Run the registration script on each machine running LM Studio:
+```bash
+python register_node.py --orchestrator http://<orchestrator-ip>:8000 --weight 1
+```
+
 ## 🛠️ Tech Stack
 - **Language**: Python 3.10+
 - **Framework**: [FastAPI](https://fastapi.tiangolo.com/)
@@ -60,12 +81,12 @@ graph TD
 - **Tokenization**: [tiktoken](https://github.com/openai/tiktoken)
 
 ## 🗺️ Roadmap
-- [ ] **v1: Base Proxy** - Basic request forwarding.
-- [ ] **v1: Endpoint Registry** - Node management API.
-- [ ] **v1: Registration Script** - Automatic node onboarding.
-- [ ] **v1: Deterministic Chunker** - Token-aware splitting.
-- [ ] **v1: Async Dispatcher** - Parallel execution.
-- [ ] **v1: Sequence Aggregator** - Ordered response joining.
-- [ ] **v1: Load Balancer** - Weight-based distribution.
-- [ ] **v1: Failover** - Timeout and dead-node handling.
+- [x] **v1: Base Proxy** - Basic request forwarding.
+- [x] **v1: Endpoint Registry** - Node management API.
+- [x] **v1: Registration Script** - Automatic node onboarding.
+- [x] **v1: Deterministic Chunker** - Token-aware splitting.
+- [x] **v1: Async Dispatcher** - Parallel execution.
+- [x] **v1: Sequence Aggregator** - Ordered response joining.
+- [x] **v1: Load Balancer** - Weight-based distribution.
+- [x] **v1: Failover** - Timeout and dead-node handling.
 - [ ] **v2: Performance Metrics** - Aggregate cluster TPS tracking.
